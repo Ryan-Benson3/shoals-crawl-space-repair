@@ -1,16 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=Manrope:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #f4f4f2;
-  --color-bg-dark: #0a0a0a;
-  --color-bg-darker: #000000;
-  --color-text: #0a0a0a;
-  --color-text-muted: #9b9c9c;
-  --color-accent: #dc1c0b;
-  --color-accent-hover: #b81509;
-  --font-heading: 'Outfit', ui-sans-serif, system-ui, sans-serif;
-  --font-body: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  --color-charcoal: #1a1a1a;
+  --color-charcoal-light: #2a2a2a;
+  --color-charcoal-lighter: #333333;
+  --color-green: #166534;
+  --color-green-light: #22c55e;
+  --color-green-dark: #14532d;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
 }
 
 * {
@@ -24,89 +22,49 @@ html {
 }
 
 body {
-  font-family: var(--font-body);
-  color: var(--color-text);
-  background: var(--color-bg);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  color: #333333;
+  background: #ffffff;
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
+
 ::-webkit-scrollbar-track {
-  background: var(--color-bg);
+  background: #1a1a1a;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: var(--color-accent);
-  border-radius: 3px;
+  background: #166534;
+  border-radius: 4px;
 }
 
-/* Section label style: small red text like "(01) SERVICES" */
-.section-label {
-  font-family: var(--font-heading);
-  font-weight: 500;
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--color-accent);
-}
-
-/* Smooth section transitions */
-section {
-  position: relative;
+/* Hero pattern overlay */
+.hero-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23166534' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
 /* Service card hover */
 .service-card {
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .service-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.12);
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(22, 101, 52, 0.15);
 }
 
-/* Testimonial card */
-.testimonial-card {
-  transition: all 0.3s ease;
-}
-.testimonial-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+/* Section divider */
+.section-divider {
+  background: linear-gradient(90deg, transparent, #166534, transparent);
+  height: 3px;
+  border-radius: 2px;
 }
 
-/* Scroll indicator animation */
-@keyframes scrollBounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(8px); }
-}
-
-.scroll-indicator {
-  animation: scrollBounce 2s ease-in-out infinite;
-}
-
-/* CTA button glow */
-.cta-glow {
-  box-shadow: 0 0 0 0 rgba(220, 28, 11, 0);
-  transition: box-shadow 0.3s ease;
-}
-.cta-glow:hover {
-  box-shadow: 0 8px 32px rgba(220, 28, 11, 0.3);
-}
-
-/* Area card hover */
-.area-card {
-  transition: all 0.25s ease;
-}
-.area-card:hover {
-  background: var(--color-accent);
-  color: white;
-  transform: scale(1.02);
-}
-.area-card:hover .area-icon {
-  color: white;
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #166534, #22c55e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

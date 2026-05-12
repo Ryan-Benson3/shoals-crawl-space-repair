@@ -1,124 +1,185 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { motion } from "framer-motion";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  Send,
+  CheckCircle2,
+} from "lucide-react";
 
 const PHONE = "(256) 415-7610";
 const EMAIL = "info@theflooringfolks.com";
 
 export default function Contact() {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setStatus("sending");
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    formData.append("access_key", "edd0ecf0-f3ea-46a8-bc31-b3725214b651");
+    formData.append("subject", "New Estimate Request from Shoals Crawl Space Website");
+    formData.append("from_name", "Shoals Crawl Space Website");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus("success");
+        form.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
     <section id="contact" className="py-24 sm:py-32 bg-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Section header */}
-        <div className="mb-16">
-          <p className="section-label mb-4">(06) Contact</p>
-          <h2 className="font-heading font-800 text-4xl sm:text-5xl lg:text-6xl text-[#0a0a0a] mb-6 max-w-3xl">
-            Get Your Free
-            <br />
-            <span className="text-accent">Crawl Space Estimate</span>
-          </h2>
-          <p className="text-[#9b9c9c] max-w-2xl text-lg leading-relaxed">
-            Ready to solve your crawl space moisture problems? Fill out the form
-            or give us a call. We&apos;ll schedule a free crawl space inspection at
-            your convenience.
-          </p>
-        </div>
-
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* Left — contact info */}
-          <div className="space-y-8">
-            <div className="flex items-start gap-5">
-              <div className="w-14 h-14 rounded-sm bg-[#0a0a0a] flex items-center justify-center shrink-0">
-                <svg viewBox="0 0 24 24" className="w-6 h-6 text-accent" fill="none" stroke="currentColor" strokeWidth={1.5}>
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-                </svg>
+          {/* Left — info */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <p className="text-green font-bold text-xs tracking-[0.15em] uppercase mb-4">
+              Contact Us
+            </p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-charcoal mb-6 leading-tight">
+              Get Your Free Crawl Space Inspection
+            </h2>
+            <p className="text-charcoal/60 text-lg leading-relaxed mb-10">
+              Ready to solve your crawl space moisture problems? Fill out the form or give us a call.
+              We&apos;ll schedule a free inspection at your convenience and
+              provide a detailed, no-obligation estimate.
+            </p>
+
+            <div className="space-y-6">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-green/10 flex items-center justify-center text-green shrink-0">
+                  <Phone size={22} />
+                </div>
+                <div>
+                  <p className="font-bold text-charcoal text-lg">Phone</p>
+                  <a
+                    href={`tel:${PHONE.replace(/[^\d+]/g, "")}`}
+                    className="text-green font-semibold hover:underline text-lg"
+                  >
+                    {PHONE}
+                  </a>
+                  <p className="text-charcoal/50 text-sm">Click to call</p>
+                </div>
               </div>
-              <div>
-                <h4 className="font-heading font-bold text-[#0a0a0a] text-lg mb-1">Phone</h4>
-                <a
-                  href={`tel:${PHONE.replace(/[^\d+]/g, "")}`}
-                  className="text-accent hover:text-accent-hover font-heading font-bold text-2xl transition-colors"
-                >
-                  {PHONE}
-                </a>
-                <p className="text-[#9b9c9c] text-sm mt-1">
-                  Mon–Fri 7am–6pm · Sat 8am–2pm
-                </p>
+
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-green/10 flex items-center justify-center text-green shrink-0">
+                  <Mail size={22} />
+                </div>
+                <div>
+                  <p className="font-bold text-charcoal text-lg">Email</p>
+                  <a
+                    href={`mailto:${EMAIL}`}
+                    className="text-green font-semibold hover:underline"
+                  >
+                    {EMAIL}
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-green/10 flex items-center justify-center text-green shrink-0">
+                  <MapPin size={22} />
+                </div>
+                <div>
+                  <p className="font-bold text-charcoal text-lg">Location</p>
+                  <p className="text-charcoal/60">
+                    Florence, AL — Serving the Shoals Region
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-green/10 flex items-center justify-center text-green shrink-0">
+                  <Clock size={22} />
+                </div>
+                <div>
+                  <p className="font-bold text-charcoal text-lg">Hours</p>
+                  <p className="text-charcoal/60">Mon–Fri: 7:00 AM – 6:00 PM</p>
+                  <p className="text-charcoal/60">Saturday: 8:00 AM – 2:00 PM</p>
+                  <p className="text-charcoal/60">Sunday: Closed</p>
+                </div>
               </div>
             </div>
 
-            <div className="flex items-start gap-5">
-              <div className="w-14 h-14 rounded-sm bg-[#0a0a0a] flex items-center justify-center shrink-0">
-                <svg viewBox="0 0 24 24" className="w-6 h-6 text-accent" fill="none" stroke="currentColor" strokeWidth={1.5}>
-                  <path d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-                </svg>
-              </div>
-              <div>
-                <h4 className="font-heading font-bold text-[#0a0a0a] text-lg mb-1">Email</h4>
-                <a
-                  href={`mailto:${EMAIL}`}
-                  className="text-accent hover:text-accent-hover font-heading font-bold text-lg transition-colors"
-                >
-                  {EMAIL}
-                </a>
-              </div>
+            {/* Service area summary */}
+            <div className="mt-10 p-6 bg-charcoal rounded-2xl">
+              <h3 className="text-white font-bold mb-3">Service Areas</h3>
+              <p className="text-white/50 text-sm leading-relaxed">
+                Florence • Muscle Shoals • Sheffield • Tuscumbia • Killen •
+                Rogersville • Lexington • Anderson • Town Creek • Leighton •
+                Russellville • Haleyville • Moulton • Lawrenceburg • Loretto
+              </p>
             </div>
-
-            <div className="flex items-start gap-5">
-              <div className="w-14 h-14 rounded-sm bg-[#0a0a0a] flex items-center justify-center shrink-0">
-                <svg viewBox="0 0 24 24" className="w-6 h-6 text-accent" fill="none" stroke="currentColor" strokeWidth={1.5}>
-                  <path d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                </svg>
-              </div>
-              <div>
-                <h4 className="font-heading font-bold text-[#0a0a0a] text-lg mb-1">Service Area</h4>
-                <p className="text-[#9b9c9c] leading-relaxed">
-                  Florence, Muscle Shoals, Sheffield, Tuscumbia, Killen, Rogersville,
-                  and all communities within 60 miles of Florence, Alabama
-                </p>
-              </div>
-            </div>
-          </div>
+          </motion.div>
 
           {/* Right — form */}
-          <div className="bg-[#f4f4f2] rounded-sm p-10 border border-black/5">
-            {submitted ? (
-              <div className="text-center py-16">
-                <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-5">
-                  <svg viewBox="0 0 24 24" className="w-8 h-8 text-accent" fill="none" stroke="currentColor" strokeWidth={2}>
-                    <path d="M4.5 12.75l6 6 9-13.5" />
-                  </svg>
-                </div>
-                <h3 className="font-heading font-bold text-2xl text-[#0a0a0a] mb-2">Thank You!</h3>
-                <p className="text-[#9b9c9c]">
-                  We&apos;ve received your message and will get back to you within 24 hours.
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="bg-charcoal rounded-2xl p-8 border border-charcoal-lighter"
+          >
+            {status === "success" ? (
+              <div className="text-center py-12">
+                <CheckCircle2 size={56} className="text-green mx-auto mb-4" />
+                <h3 className="text-2xl font-bold text-white mb-2">
+                  Thank You!
+                </h3>
+                <p className="text-white/60">
+                  We&apos;ve received your message and will get back to you
+                  within 24 hours.
                 </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-heading font-bold text-[#0a0a0a] mb-2">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-semibold text-white/80 mb-1.5"
+                    >
                       Full Name *
                     </label>
                     <input
                       id="name"
                       name="name"
                       required
-                      className="w-full px-4 py-3.5 rounded-sm border border-black/10 bg-white focus:border-accent focus:ring-1 focus:ring-accent outline-none text-[#0a0a0a] text-sm"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-green transition-colors"
                       placeholder="John Smith"
                     />
                   </div>
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-heading font-bold text-[#0a0a0a] mb-2">
+                    <label
+                      htmlFor="phone"
+                      className="block text-sm font-semibold text-white/80 mb-1.5"
+                    >
                       Phone *
                     </label>
                     <input
@@ -126,13 +187,17 @@ export default function Contact() {
                       name="phone"
                       type="tel"
                       required
-                      className="w-full px-4 py-3.5 rounded-sm border border-black/10 bg-white focus:border-accent focus:ring-1 focus:ring-accent outline-none text-[#0a0a0a] text-sm"
-                      placeholder="(555) 123-4567"
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-green transition-colors"
+                      placeholder="(256) 555-1234"
                     />
                   </div>
                 </div>
+
                 <div>
-                  <label htmlFor="email" className="block text-sm font-heading font-bold text-[#0a0a0a] mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-semibold text-white/80 mb-1.5"
+                  >
                     Email *
                   </label>
                   <input
@@ -140,56 +205,79 @@ export default function Contact() {
                     name="email"
                     type="email"
                     required
-                    className="w-full px-4 py-3.5 rounded-sm border border-black/10 bg-white focus:border-accent focus:ring-1 focus:ring-accent outline-none text-[#0a0a0a] text-sm"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-green transition-colors"
                     placeholder="john@example.com"
                   />
                 </div>
+
                 <div>
-                  <label htmlFor="service" className="block text-sm font-heading font-bold text-[#0a0a0a] mb-2">
+                  <label
+                    htmlFor="service"
+                    className="block text-sm font-semibold text-white/80 mb-1.5"
+                  >
                     Service Needed
                   </label>
                   <select
                     id="service"
                     name="service"
-                    className="w-full px-4 py-3.5 rounded-sm border border-black/10 bg-white focus:border-accent focus:ring-1 focus:ring-accent outline-none text-[#0a0a0a] text-sm"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-green transition-colors"
                   >
                     <option value="">Select a service...</option>
-                    <option>Crawl Space Encapsulation</option>
-                    <option>Vapor Barrier Installation</option>
-                    <option>Crawl Space Waterproofing</option>
-                    <option>Crawl Space Repair</option>
-                    <option>Moisture Control</option>
-                    <option>Sump Pump Installation</option>
-                    <option>Crawl Space Insulation</option>
-                    <option>Drainage Systems</option>
-                    <option>Other</option>
+                    <option value="Crawl Space Encapsulation">Crawl Space Encapsulation</option>
+                    <option value="Vapor Barrier Installation">Vapor Barrier Installation</option>
+                    <option value="Crawl Space Waterproofing">Crawl Space Waterproofing</option>
+                    <option value="Crawl Space Repair">Crawl Space Repair</option>
+                    <option value="Moisture Control">Moisture Control</option>
+                    <option value="Sump Pump Installation">Sump Pump Installation</option>
+                    <option value="Crawl Space Insulation">Crawl Space Insulation</option>
+                    <option value="Drainage Systems">Drainage Systems</option>
+                    <option value="Other">Other</option>
                   </select>
                 </div>
+
                 <div>
-                  <label htmlFor="message" className="block text-sm font-heading font-bold text-[#0a0a0a] mb-2">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-semibold text-white/80 mb-1.5"
+                  >
                     Tell Us About Your Crawl Space
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     rows={4}
-                    className="w-full px-4 py-3.5 rounded-sm border border-black/10 bg-white focus:border-accent focus:ring-1 focus:ring-accent outline-none text-[#0a0a0a] text-sm resize-none"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-green transition-colors resize-none"
                     placeholder="Describe your crawl space issue..."
                   />
                 </div>
+
+                {status === "error" && (
+                  <p className="text-green-light text-sm text-center">
+                    Something went wrong. Please try again or call us at {PHONE}.
+                  </p>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full bg-accent hover:bg-accent-hover text-white font-heading font-bold text-lg py-4.5 rounded-sm transition-all duration-200 cta-glow"
+                  disabled={status === "sending"}
+                  className="w-full bg-green hover:bg-green-light disabled:opacity-70 text-white font-bold text-lg py-4 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-lg shadow-green/25"
                 >
-                  Request Free Estimate
+                  {status === "sending" ? (
+                    "Sending..."
+                  ) : (
+                    <>
+                      Request Free Inspection
+                      <Send size={18} />
+                    </>
+                  )}
                 </button>
-                <p className="text-[#9b9c9c] text-xs text-center">
-                  By submitting, you agree to be contacted about your crawl space project.
-                  We never share your information.
+                <p className="text-white/30 text-xs text-center">
+                  By submitting, you agree to be contacted about your crawl space
+                  project. We never share your information.
                 </p>
               </form>
             )}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

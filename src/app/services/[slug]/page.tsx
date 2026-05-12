@@ -22,7 +22,7 @@ export async function generateMetadata({
   if (!service) return {};
   return {
     title: `${service.name} — Florence, AL | Shoals Crawl Space Encapsulation`,
-    description: service.shortDescription,
+    description: service.tagline,
     alternates: { canonical: `/services/${service.slug}` },
   };
 }
@@ -75,7 +75,7 @@ export default async function ServicePage({
               <span className="text-accent">Florence, AL</span>
             </h1>
             <p className="text-white/60 text-lg max-w-2xl mb-10 leading-relaxed">
-              {service.shortDescription}
+              {service.tagline}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a
@@ -131,7 +131,7 @@ export default async function ServicePage({
               What Sets Us Apart
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {service.features.map((feature, i) => (
+              {service.benefits.map((feature, i) => (
                 <div
                   key={i}
                   className="bg-white rounded-sm p-7 border border-black/5 text-center group hover:shadow-lg transition-shadow"
@@ -148,7 +148,10 @@ export default async function ServicePage({
                     </svg>
                   </div>
                   <p className="font-heading font-bold text-[#0a0a0a]">
-                    {feature}
+                    {feature.title}
+                  </p>
+                  <p className="text-[#9b9c9c] text-sm mt-2">
+                    {feature.description}
                   </p>
                 </div>
               ))}

@@ -1,95 +1,97 @@
 "use client";
 
+import { motion } from "framer-motion";
+import { Star, Quote } from "lucide-react";
+
 const testimonials = [
   {
     name: "James & Linda H.",
     location: "Florence, AL",
-    text: "We had musty smells coming from under our house for years. Shoals Crawl Space Encapsulation sealed our entire crawl space and the difference was immediate — no more musty odor and our energy bills dropped by 25%. Best home investment we've ever made.",
+    text: "We had musty smells coming from under our house for years. Shoals Crawl Space Encapsulation sealed our entire crawl space and the difference was immediate — no more musty odor and our energy bills dropped by 25%.",
     rating: 5,
   },
   {
     name: "Michael T.",
     location: "Muscle Shoals, AL",
-    text: "After noticing our floors were sagging, we called Shoals Crawl Space Encapsulation. They found significant wood rot from moisture damage and repaired the joists plus installed a full vapor barrier system. Our floors are solid again.",
+    text: "After noticing our floors were sagging, they found significant wood rot from moisture damage. They repaired the joists plus installed a full vapor barrier system. Our floors are solid again. Highly recommend!",
     rating: 5,
   },
   {
     name: "Sarah K.",
     location: "Sheffield, AL",
-    text: "We got three quotes for crawl space encapsulation. Shoals offered the best combination of quality materials, fair pricing, and warranty coverage. They used 20-mil barrier instead of the thin stuff other companies quoted. Excellent work.",
+    text: "We got three quotes for crawl space encapsulation. Shoals offered the best combination of quality materials, fair pricing, and warranty coverage. They used 20-mil barrier instead of the thin stuff others quoted.",
     rating: 5,
   },
   {
     name: "Robert M.",
     location: "Tuscumbia, AL",
-    text: "Our 1940s home had a dirt crawl space with standing water after every rain. They installed a sump pump, encapsulated the entire space, and added a dehumidifier. It's been two years and the crawl space has stayed bone dry.",
+    text: "Our 1940s home had a dirt crawl space with standing water after every rain. They installed a sump pump, encapsulated the entire space, and added a dehumidifier. It's been two years and it's stayed bone dry.",
     rating: 5,
   },
   {
     name: "Amanda R.",
     location: "Killen, AL",
-    text: "Living outside of town, I was worried about finding a contractor willing to come out. They didn't hesitate. Found mold growing on our floor joists and remediated it completely. Fair price, quality work, left our property spotless.",
+    text: "Living outside of town, I was worried about finding a contractor willing to come out. They didn't hesitate. Found mold growing on our floor joists and remediated it completely. Fair price, quality work.",
     rating: 5,
   },
   {
     name: "David W.",
     location: "Rogersville, AL",
-    text: "Our heating bills were through the roof. Turns out our crawl space was letting in tons of humid air. After encapsulation, our energy bills dropped almost 30% and the house feels so much more comfortable. Highly recommend.",
+    text: "Our heating bills were through the roof. Turns out our crawl space was letting in tons of humid air. After encapsulation, our energy bills dropped almost 30% and the house feels so much more comfortable.",
     rating: 5,
   },
 ];
 
-function StarRating({ rating }: { rating: number }) {
-  return (
-    <div className="flex gap-1 mb-5">
-      {Array.from({ length: rating }).map((_, i) => (
-        <svg key={i} viewBox="0 0 20 20" className="w-4 h-4 text-accent fill-current">
-          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
-      ))}
-    </div>
-  );
-}
-
 export default function Testimonials() {
   return (
-    <section className="py-24 sm:py-32 bg-[#0a0a0a] relative overflow-hidden">
-      {/* Subtle red glow */}
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[120px]" />
+    <section className="py-24 sm:py-32 bg-charcoal relative overflow-hidden">
+      <div className="absolute inset-0 hero-pattern opacity-10" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-green/5 rounded-full blur-[120px]" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Section header */}
-        <div className="mb-20">
-          <p className="section-label mb-4">(03) Testimonials</p>
-          <h2 className="font-heading font-800 text-4xl sm:text-5xl lg:text-6xl text-white mb-6 max-w-3xl">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <p className="text-green font-bold text-xs tracking-[0.15em] uppercase mb-4">
+            Testimonials
+          </p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4">
             What Our Customers Say
           </h2>
-          <p className="text-[#9b9c9c] max-w-2xl text-lg leading-relaxed">
-            Don&apos;t just take our word for it — hear from homeowners across the
-            Shoals area who trust us with their crawl space needs.
+          <div className="section-divider w-24 mx-auto mb-6" />
+          <p className="text-white/50 max-w-2xl mx-auto text-lg">
+            Hear from homeowners across the Shoals area who trust us with their crawl space needs.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Testimonials grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.map((t) => (
-            <div
+          {testimonials.map((t, i) => (
+            <motion.div
               key={t.name}
-              className="testimonial-card bg-white/5 border border-white/10 rounded-sm p-8"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.12 }}
+              className="bg-white/5 border border-white/10 rounded-2xl p-7 hover:border-green/30 transition-all relative"
             >
-              <StarRating rating={t.rating} />
-              <p className="text-white/70 text-sm leading-relaxed mb-6">
+              <Quote size={32} className="text-green/20 absolute top-6 right-6" />
+              <div className="flex gap-1 mb-4">
+                {Array.from({ length: t.rating }).map((_, j) => (
+                  <Star key={j} size={16} className="text-green fill-green" />
+                ))}
+              </div>
+              <p className="text-white/70 leading-relaxed mb-6 text-sm">
                 &ldquo;{t.text}&rdquo;
               </p>
-              <div className="border-t border-white/10 pt-5">
-                <p className="font-heading font-bold text-white text-sm">
-                  {t.name}
-                </p>
-                <p className="text-[#9b9c9c] text-xs mt-0.5">
-                  {t.location}
-                </p>
+              <div>
+                <p className="text-white font-bold">{t.name}</p>
+                <p className="text-white/40 text-sm">{t.location}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

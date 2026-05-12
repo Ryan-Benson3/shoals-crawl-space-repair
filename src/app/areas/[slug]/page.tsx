@@ -21,8 +21,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const city = cities.find((c) => c.slug === slug);
   if (!city) return {};
   return {
-    title: `Crawl Space Repair & Encapsulation in ${city.name}, ${city.state} | Shoals Crawl Space Encapsulation`,
-    description: `Professional crawl space encapsulation and moisture control in ${city.name}, ${city.state}. Vapor barriers, sump pumps, mold remediation. Free estimates. Call ${PHONE}.`,
+    title: `Crawl Space Repair & Encapsulation in ${city.name}, AL | Shoals Crawl Space Encapsulation`,
+    description: `Professional crawl space encapsulation and moisture control in ${city.name}, AL. Vapor barriers, sump pumps, mold remediation. Free estimates. Call ${PHONE}.`,
   };
 }
 
@@ -41,13 +41,13 @@ export default async function CityPage({ params }: Props) {
       name: city.name,
       containedInPlace: {
         "@type": "State",
-        name: city.state === "AL" ? "Alabama" : "Tennessee",
+        name: "AL" === "AL" ? "Alabama" : "Tennessee",
       },
     },
     address: {
       "@type": "PostalAddress",
       addressLocality: city.name,
-      addressRegion: city.state,
+      addressRegion: "AL",
     },
   };
 
@@ -64,12 +64,12 @@ export default async function CityPage({ params }: Props) {
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-accent/5 rounded-full blur-[120px]" />
           <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
             <p className="section-label mb-4">
-              Serving {city.name}, {city.state}
+              Serving {city.name}, {"AL"}
             </p>
             <h1 className="font-heading font-800 text-4xl sm:text-5xl lg:text-6xl text-white leading-tight mb-6">
               Crawl Space Repair &amp; Encapsulation
               <br />
-              in <span className="text-accent">{city.name}, {city.state}</span>
+              in <span className="text-accent">{city.name}, {"AL"}</span>
             </h1>
             <p className="text-white/60 text-lg max-w-2xl leading-relaxed">
               Professional crawl space encapsulation, vapor barrier installation, and moisture control services for {city.name} homeowners.
@@ -100,9 +100,9 @@ export default async function CityPage({ params }: Props) {
               </div>
               <div className="bg-[#f4f4f2] rounded-sm p-7 border border-black/5">
                 <h3 className="font-heading font-bold text-[#0a0a0a] text-sm tracking-wider uppercase mb-2">
-                  ZIP Codes
+                  County
                 </h3>
-                <p className="text-[#9b9c9c]">{city.zipCodes.join(", ")}</p>
+                <p className="text-[#9b9c9c]">{city.county} County</p>
               </div>
             </div>
 
@@ -122,7 +122,7 @@ export default async function CityPage({ params }: Props) {
                     {s.name}
                   </h3>
                   <p className="text-[#9b9c9c] text-sm leading-relaxed">
-                    {s.shortDescription}
+                    {s.tagline}
                   </p>
                 </Link>
               ))}

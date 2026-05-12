@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { MapPin } from "lucide-react";
 
 const areas = [
   { name: "Florence", slug: "florence-al" },
@@ -16,50 +18,68 @@ const areas = [
   { name: "Russellville", slug: "russellville-al" },
   { name: "Haleyville", slug: "haleyville-al" },
   { name: "Moulton", slug: "moulton-al" },
-  { name: "Lawrenceburg", slug: "lawrenceburg-al" },
+  { name: "Lawrenceburg", slug: "lawrenceburg-tn" },
   { name: "Loretto", slug: "loretto-tn" },
 ];
 
 export default function ServiceAreas() {
   return (
-    <section id="areas" className="py-24 sm:py-32 bg-[#f4f4f2]">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Section header */}
-        <div className="mb-20">
-          <p className="section-label mb-4">(05) Service Areas</p>
-          <h2 className="font-heading font-800 text-4xl sm:text-5xl lg:text-6xl text-[#0a0a0a] mb-6 max-w-3xl">
+    <section id="areas" className="py-24 sm:py-32 bg-charcoal relative overflow-hidden">
+      <div className="absolute inset-0 hero-pattern opacity-10" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <p className="text-green font-bold text-xs tracking-[0.15em] uppercase mb-4">
+            Service Areas
+          </p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4">
             Serving the Greater Shoals Area
           </h2>
-          <p className="text-[#9b9c9c] max-w-2xl text-lg leading-relaxed">
-            Proudly serving homeowners within 60 miles of Florence,
-            Alabama. If you&apos;re in the Shoals area, we&apos;ve got your crawl space covered.
+          <div className="section-divider w-24 mx-auto mb-6" />
+          <p className="text-white/50 max-w-2xl mx-auto text-lg">
+            Proudly serving homeowners across 15+ communities
+            throughout the Shoals region and surrounding areas.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Areas grid */}
-        <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-3">
-          {areas.map((a) => (
-            <Link
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          {areas.map((a, i) => (
+            <motion.div
               key={a.slug}
-              href={`/areas/${a.slug}`}
-              className="area-card bg-white rounded-sm p-5 text-center border border-black/5"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.04 }}
             >
-              <svg
-                viewBox="0 0 24 24"
-                className="area-icon w-5 h-5 mx-auto mb-2 text-accent transition-colors"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={1.5}
+              <Link
+                href={`/areas/${a.slug}`}
+                className="bg-white/5 border border-white/10 hover:bg-green hover:border-green text-white rounded-xl p-5 text-center font-semibold transition-all group flex flex-col items-center gap-2"
               >
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
-              <span className="font-heading font-bold text-sm text-[#0a0a0a] transition-colors">
+                <MapPin size={20} className="text-green group-hover:text-white transition-colors" />
                 {a.name}
-              </span>
-            </Link>
+              </Link>
+            </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="text-center mt-10"
+        >
+          <p className="text-white/35 text-sm">
+            Also serving: Decatur • Athens • Madison • Huntsville and all
+            communities within 60 miles of Florence, AL
+          </p>
+        </motion.div>
       </div>
     </section>
   );
