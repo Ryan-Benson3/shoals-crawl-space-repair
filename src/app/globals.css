@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=Manrope:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #f4f4f2;
+  --color-bg-dark: #0a0a0a;
+  --color-bg-darker: #000000;
+  --color-text: #0a0a0a;
+  --color-text-muted: #9b9c9c;
+  --color-accent: #dc1c0b;
+  --color-accent-hover: #b81509;
+  --font-heading: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 3px;
+}
+
+/* Section label style: small red text like "(01) SERVICES" */
+.section-label {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+/* Smooth section transitions */
+section {
+  position: relative;
+}
+
+/* Service card hover */
+.service-card {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.12);
+}
+
+/* Testimonial card */
+.testimonial-card {
+  transition: all 0.3s ease;
+}
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* Scroll indicator animation */
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+.scroll-indicator {
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+/* CTA button glow */
+.cta-glow {
+  box-shadow: 0 0 0 0 rgba(220, 28, 11, 0);
+  transition: box-shadow 0.3s ease;
+}
+.cta-glow:hover {
+  box-shadow: 0 8px 32px rgba(220, 28, 11, 0.3);
+}
+
+/* Area card hover */
+.area-card {
+  transition: all 0.25s ease;
+}
+.area-card:hover {
+  background: var(--color-accent);
+  color: white;
+  transform: scale(1.02);
+}
+.area-card:hover .area-icon {
+  color: white;
+}
