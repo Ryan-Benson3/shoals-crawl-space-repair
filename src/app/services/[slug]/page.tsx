@@ -112,7 +112,19 @@ export default async function ServicePage({
           </div>
         </section>
 
-        {/* Content */}
+        
+      {/* Direct Answer (AI Overview optimization) */}
+      {service.directAnswer && (
+        <section className="py-8 bg-accent/5 border-b border-accent/10">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p className="text-lg text-primary leading-relaxed font-medium">
+              {service.directAnswer}
+            </p>
+          </div>
+        </section>
+      )}
+
+{/* Content */}
         <section className="py-20 sm:py-28 bg-white">
           <div className="max-w-4xl mx-auto px-6 lg:px-8">
             <div className="text-[#0a0a0a]/80 text-lg leading-relaxed space-y-6">

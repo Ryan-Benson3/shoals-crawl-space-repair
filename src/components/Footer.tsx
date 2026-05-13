@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
 
 const PHONE = "(256) 415-7610";
-const EMAIL = "info@theflooringfolks.com";
+const EMAIL = "info@shoalscrawlspacerepair.com";
 
 const serviceLinks = [
   { label: "Crawl Space Encapsulation", href: "/services/encapsulation" },

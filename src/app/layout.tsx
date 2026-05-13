@@ -57,7 +57,7 @@ const localBusinessSchema = {
   name: "Shoals Crawl Space Encapsulation",
   url: SITE_URL,
   telephone: PHONE,
-  email: "info@theflooringfolks.com",
+  email: "info@shoalscrawlspacerepair.com",
   description:
     "Shoals Crawl Space Encapsulation is a licensed and insured crawl space contractor serving Florence, Muscle Shoals, Sheffield, and the greater Shoals area of Alabama. 15+ years experience.",
   address: {

@@ -6,6 +6,7 @@ export interface Service {
   metaTitle: string;
   metaDescription: string;
   heroDescription: string;
+  directAnswer?: string;
   description: string;
   content: string;
   benefits: { title: string; description: string }[];
@@ -23,6 +24,7 @@ export const services: Service[] = [
     metaDescription: "Need crawl space encapsulation in Florence, AL? Shoals Crawl Space Encapsulation offers complete moisture protection. Save up to 30% on energy bills. Call (256) 415-7610!",
     heroDescription: "Expert crawl space encapsulation services for homeowners throughout the Shoals area. Seal out moisture, mold, and energy loss for good.",
     description: "Professional crawl space encapsulation services in Florence, AL and surrounding areas",
+    directAnswer: "Crawl space encapsulation in Florence, AL seals your crawl space with heavy-duty 12-20 mil reinforced vapor barriers on floors, walls, and piers. Shoals Crawl Space Repair installs commercial-grade barriers backed by a 25-year material warranty. Most homeowners see 15-30% energy savings and complete mold elimination.",
     content: `<p>When your crawl space needs protection in Florence, AL, you need a contractor you can trust to do the job right. Shoals Crawl Space Encapsulation has been providing expert encapsulation services to homeowners throughout Florence, Muscle Shoals, Sheffield, Tuscumbia, and the greater Shoals area for over 15 years. Alabama's average relative humidity exceeds 70% throughout the year, and the crawl spaces beneath older homes are especially vulnerable to moisture buildup that leads to mold, wood rot, and energy loss.</p>
 
 <p>Our encapsulation process seals your entire crawl space with heavy-duty polyethylene barriers on the floor, walls, and piers, creating a controlled environment that blocks ground moisture, outside air, and pests. We use <strong>12-mil to 20-mil reinforced vapor barriers</strong> that are puncture-resistant, antimicrobial-treated, and backed by a 25-year warranty. Unlike thin contractor-grade barriers that tear and deteriorate, our commercial-quality materials are built to last decades.</p>
@@ -63,6 +65,7 @@ export const services: Service[] = [
     metaDescription: "Need a vapor barrier in Florence, AL? Shoals Crawl Space installs 12-20 mil reinforced barriers. 25-year warranty. Call (256) 415-7610 for a free inspection!",
     heroDescription: "Professional vapor barrier installation to block ground moisture and protect your home's foundation, floors, and indoor air quality.",
     description: "Professional vapor barrier installation in Florence, AL and surrounding areas",
+    directAnswer: "Vapor barrier installation in Florence, AL protects crawl spaces from ground moisture using 12-20 mil reinforced polyethylene barriers. Shoals Crawl Space Repair installs antimicrobial-treated barriers with sealed seams and mechanical fastening. Barrier installations start at $1,500 with a 25-year material warranty.",
     content: `<p>In the Shoals area, the red clay soil common throughout Lauderdale and Colbert counties holds significant moisture that migrates upward through the crawl space floor. Our team installs 12-mil to 20-mil reinforced polyethylene vapor barriers that cover the entire crawl space floor and extend up the foundation walls. Unlike thin, contractor-grade barriers that tear and deteriorate, our commercial-quality barriers are puncture-resistant, antimicrobial-treated, and backed by a 25-year warranty.</p>
 
 <p>Proper vapor barrier installation can reduce crawl space humidity by 15-20% and prevent wood rot, mold growth, and structural damage to floor joists and subfloor. For crawl spaces in the Shoals area, we recommend at least <strong>12-mil reinforced polyethylene</strong>. Higher-traffic crawl spaces or those with sharp gravel benefit from 20-mil barrier.</p>
@@ -98,6 +101,7 @@ export const services: Service[] = [
     metaDescription: "Need crawl space waterproofing in Florence, AL? Shoals Crawl Space offers drainage systems, sump pumps & moisture barriers. Call (256) 415-7610!",
     heroDescription: "Comprehensive waterproofing solutions including drainage systems, sump pumps, and sealed barriers to keep your crawl space bone dry.",
     description: "Professional crawl space waterproofing in Florence, AL and surrounding areas",
+    directAnswer: "Crawl space waterproofing in Florence, AL stops water intrusion with interior drainage systems, sump pumps, and wall sealants. Shoals Crawl Space Repair installs French drain systems that channel water to sump pumps, keeping crawl spaces permanently dry. Systems start at $3,500 with lifetime warranty options.",
     content: `<p>Many homes in the Shoals area experience crawl space flooding during heavy rains, spring thaw, and rising water table events. Our waterproofing solutions combine interior drainage channels, sump pump systems, and sealed vapor barriers to create a complete moisture management system. We install French drains along the interior perimeter that channel water to a recessed sump pit, where a high-capacity pump removes it safely away from your foundation.</p>
 
 <p>Combined with wall encapsulation and sealed access points, our waterproofing systems keep crawl spaces bone dry year-round, even during North Alabama's heaviest rain events. Waterproofing focuses on actively removing water through drainage and pumping systems, while encapsulation focuses on preventing moisture from entering. Most homes benefit from both working together as a complete system.</p>
@@ -133,6 +137,7 @@ export const services: Service[] = [
     metaDescription: "Need crawl space repair in Florence, AL? Shoals Crawl Space fixes sagging floors, damaged joists & settling foundations. Call (256) 415-7610!",
     heroDescription: "Expert structural repair for sagging floors, damaged joists, and settling foundations. Restore your home's structural integrity.",
     description: "Professional crawl space repair in Florence, AL and surrounding areas",
+    directAnswer: "Crawl space repair in Florence, AL fixes sagging floors, damaged joists, and deteriorating support posts caused by moisture and wood rot. Shoals Crawl Space Repair sistering joists, replacing posts, and re-leveling floors with steel supports. Repairs start at $2,000 with transferable structural warranties.",
     content: `<p>Over time, the crawl spaces beneath Shoals area homes deteriorate due to moisture damage, wood rot, and settling. Common problems include sagging floors, bouncy floor joists, cracked or leaning piers, and deteriorated support beams. Our repair team installs adjustable steel support posts, sistered joists, and new beam sections to permanently stabilize your floor system.</p>
 
 <p>Warning signs include sagging or bouncy floors, doors that won't close properly, visible cracks in drywall, and gaps between the floor and baseboards. In most cases, we can stabilize and level your floors from below by installing steel support posts, sistering damaged joists, and replacing deteriorated piers.</p>
@@ -168,6 +173,7 @@ export const services: Service[] = [
     metaDescription: "Need moisture control in Florence, AL? Shoals Crawl Space installs dehumidifiers, ventilation & monitoring systems. Call (256) 415-7610!",
     heroDescription: "Commercial-grade dehumidifiers, humidity monitoring, and smart ventilation to maintain optimal crawl space conditions year-round.",
     description: "Professional crawl space moisture control in Florence, AL and surrounding areas",
+    directAnswer: "Crawl space moisture control in Florence, AL combines commercial dehumidifiers, sealed vents, and proper ventilation to maintain optimal humidity levels. Shoals Crawl Space Repair installs Santa Fe dehumidifiers rated for crawl spaces up to 3,000 sq ft. Systems start at $1,800 with annual maintenance plans available.",
     content: `<p>Alabama's subtropical climate means crawl spaces are under constant assault from moisture. Our moisture control approach addresses every source: ground moisture through vapor barriers, air moisture through encapsulation and dehumidifiers, and water intrusion through drainage systems. We install commercial-grade dehumidifiers with automatic humidity sensing, hygrometer monitoring systems, and smart ventilation solutions that maintain optimal humidity below 55% year-round.</p>
 
 <p>We recommend maintaining crawl space humidity below 55% relative humidity. Above this level, mold growth, wood rot, and pest activity increase significantly. Our energy-efficient crawl space dehumidifiers typically cost $30-$60 per month to operate, and the energy savings from reduced HVAC load often offset most of the operating cost.</p>
@@ -203,6 +209,7 @@ export const services: Service[] = [
     metaDescription: "Need a sump pump in Florence, AL? Shoals Crawl Space installs primary & battery backup sump pumps. Call (256) 415-7610 for a free estimate!",
     heroDescription: "Primary and battery backup sump pump systems to keep your crawl space dry during storms and power outages.",
     description: "Professional sump pump installation in Florence, AL and surrounding areas",
+    directAnswer: "Sump pump installation in Florence, AL removes standing water from crawl spaces and prevents flooding during heavy rains. Shoals Crawl Space Repair installs primary and battery backup sump pump systems with sealed lids and alarm systems. Installations start at $1,200 with annual maintenance plans.",
     content: `<p>Many homes in the Shoals area, particularly those near the Tennessee River in Sheffield and Muscle Shoals, experience periodic water intrusion in their crawl spaces. Our sump pump systems are designed specifically for crawl space environments, featuring a recessed sump pit, a high-capacity submersible pump, and a discharge line that directs water safely away from your foundation.</p>
 
 <p>We install primary and battery backup pumps so your crawl space stays dry even during power outages. When the primary pump loses power, the backup automatically activates and can run for 8-12 hours. Every system includes an airtight sealed lid, check valve, and properly routed discharge line.</p>
@@ -238,6 +245,7 @@ export const services: Service[] = [
     metaDescription: "Need crawl space insulation in Florence, AL? Shoals Crawl Space installs spray foam & rigid insulation. Call (256) 415-7610 for a free estimate!",
     heroDescription: "Professional crawl space insulation installation to improve energy efficiency, floor comfort, and indoor air quality.",
     description: "Professional crawl space insulation in Florence, AL and surrounding areas",
+    directAnswer: "Crawl space insulation in Florence, AL reduces energy costs and prevents cold floors using spray foam or rigid foam board insulation. Shoals Crawl Space Repair installs R-10 to R-19 insulation on crawl space walls and rim joists. Insulation projects start at $2,000 with 15-year material warranties.",
     content: `<p>Many Shoals area homes have little or no insulation in their crawl spaces, allowing cold winter air and hot summer heat to transfer directly through your floors. We install spray foam, rigid foam board, and fiberglass insulation solutions rated for crawl space environments.</p>
 
 <p>Our insulation installations are always paired with moisture control measures to prevent condensation and mold growth within the insulation itself. Proper crawl space insulation can reduce energy costs by 15-25% and make your floors noticeably warmer in winter.</p>
@@ -273,6 +281,7 @@ export const services: Service[] = [
     metaDescription: "Need drainage in Florence, AL? Shoals Crawl Space installs French drains, curtain drains & grading corrections. Call (256) 415-7610!",
     heroDescription: "Professional interior and exterior drainage solutions to permanently redirect water away from your foundation.",
     description: "Professional drainage system installation in Florence, AL and surrounding areas",
+    directAnswer: "Crawl space drainage systems in Florence, AL channel water away from foundations using French drains, channel drains, and grading corrections. Shoals Crawl Space Repair installs interior and exterior drainage systems with sump pump integration. Drainage projects start at $2,500 with transferable warranties.",
     content: `<p>Poor drainage is one of the most common causes of crawl space moisture problems in the Shoals area. Clay-heavy soils, improper grading, and clogged gutters all contribute to water pooling around and beneath homes. Our drainage solutions include interior French drains, exterior curtain drains, downspout extensions, and grading corrections.</p>
 
 <p>Interior systems channel water along the foundation perimeter to a sump pump, while exterior systems intercept water before it reaches your foundation. We design each system based on your property's specific topography and water flow patterns.</p>
